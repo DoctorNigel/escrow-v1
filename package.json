@@ -1,0 +1,80 @@
+{
+  "name": "@DoctorNigel/gigluxe-escrow",
+  "description": "Smart contract repository for the new decentralised freelancer platform",
+  "version": "1.0.0",
+  "author": {
+    "name": "DoctorNigel",
+    "url": "https://github.com/DoctorNigel"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.1",
+    "@nomicfoundation/hardhat-ethers": "^3.0.4",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@nomicfoundation/hardhat-verify": "^1.0.4",
+    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
+    "@typechain/ethers-v6": "^0.4.3",
+    "@typechain/hardhat": "^8.0.3",
+    "@types/chai": "^4.3.5",
+    "@types/fs-extra": "^9.0.13",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^18.17.1",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "chai": "^4.3.7",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "ethers": "^6.6.7",
+    "fs-extra": "^10.1.0",
+    "hardhat": "^2.17.0",
+    "hardhat-deploy": "^0.11.34",
+    "hardhat-gas-reporter": "^1.0.9",
+    "lodash": "^4.17.21",
+    "mocha": "^10.2.0",
+    "prettier": "^2.8.8",
+    "prettier-plugin-solidity": "^1.1.3",
+    "rimraf": "^4.4.1",
+    "solhint": "^3.4.1",
+    "solhint-plugin-prettier": "^0.0.5",
+    "solidity-coverage": "^0.8.4",
+    "ts-generator": "^0.1.1",
+    "ts-node": "^10.9.1",
+    "typechain": "^8.3.1",
+    "typescript": "^4.9.5"
+  },
+  "files": [
+    "contracts"
+  ],
+  "keywords": [
+    "blockchain",
+    "ethers",
+    "ethereum",
+    "hardhat",
+    "smart-contracts",
+    "solidity",
+    "template",
+    "typescript",
+    "typechain"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rimraf ./artifacts ./cache ./coverage ./types ./coverage.json && pnpm typechain",
+    "compile": "cross-env TS_NODE_TRANSPILE_ONLY=true hardhat compile",
+    "coverage": "hardhat coverage --solcoverjs ./.solcover.js --temp artifacts --testfiles \"test/**/*.ts\" && pnpm typechain",
+    "deploy:contracts": "hardhat deploy",
+    "lint": "pnpm lint:sol && pnpm lint:ts && pnpm prettier:check",
+    "lint:sol": "solhint --max-warnings 0 \"contracts/**/*.sol\"",
+    "lint:ts": "eslint --ignore-path ./.eslintignore --ext .js,.ts .",
+    "postinstall": "DOTENV_CONFIG_PATH=./.env.example pnpm typechain",
+    "prettier:check": "prettier --check \"**/*.{js,json,md,sol,ts,yml}\"",
+    "prettier:write": "prettier --write \"**/*.{js,json,md,sol,ts,yml}\"",
+    "task:deployGreeter": "hardhat task:deployGreeter",
+    "task:setGreeting": "hardhat task:setGreeting",
+    "test": "hardhat test",
+    "typechain": "cross-env TS_NODE_TRANSPILE_ONLY=true hardhat typechain"
+  }
+}
